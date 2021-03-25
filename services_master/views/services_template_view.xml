@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="service_master_form_view" model="ir.ui.view">
+        <field name="name">service.master.form</field>
+        <field name="model">service.master</field>
+        <field name="arch" type="xml">
+            <form string="Service">
+                <sheet>
+                    <group>
+                        <group>
+                        <field name="name" string="Name"/>
+                        <field name="unit_of_measure" string="Unit of Measure" options="{'no_create_edit': True}"/>
+                        </group>
+                        <group>
+                            <field name="service_package" string="Cost/Package" widget="monetary"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="service_master_tree_view" model="ir.ui.view">
+        <field name="name">view.service.master.tree</field>
+        <field name="model">service.master</field>
+        <field name="arch" type="xml">
+            <tree string="Services">
+                <field name="name" string="Name"/>
+                <field name="service_package" string="Cost"/>
+                <field name="unit_of_measure" string="Unit of Measure"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

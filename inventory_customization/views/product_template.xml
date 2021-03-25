@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="product_template_customization" model="ir.ui.view">
+            <field name="name">product template customization</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='barcode']" position="after">
+                    <field name="category_name" invisible="1"/>
+                    <field name="origin_country_id" attrs="{'invisible': [('category_name', '=', 'Accessories')]}"/>
+                    <field name="purchase_country_id" attrs="{'invisible': [('category_name', '=', 'Accessories')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="service_category" string="Service Category" attrs="{'invisible': [('type', '!=', 'service')]}"/>
+                </xpath>
+<!--                <field name="uom_id" position="attributes">-->
+<!--                        <attribute name="attrs">{'invisible': [('category_name', '=', 'Accessories')]}</attribute>-->
+<!--                </field>-->
+                <field name="uom_po_id" position="attributes">
+                        <attribute name="attrs">{'invisible': [('category_name', '=', 'Accessories')]}</attribute>
+                </field>
+
+            </field>
+        </record>
+
+
+
+        <record id="product_template_tree_customization" model="ir.ui.view">
+            <field name="name">product template tree view customization</field>
+            <field name="model">product.template</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="product.product_template_tree_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='uom_id']" position="after">
+                    <field name="category_name" invisible="1"/>
+                    <field name="origin_country_id" optional="hide"/>
+                    <field name="purchase_country_id" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>

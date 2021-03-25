@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data noupdate="0">
+
+<!--        submenu Action-->
+        <record id="service_master_action" model="ir.actions.act_window">
+            <field name="name">Service</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">service.master</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Parent Menu -->
+        <menuitem id="service_master_main_menu" name="Services" sequence="1" groups="base.group_user"/>
+
+<!--        Submenu-->
+        <menuitem id="service_master_menu" name="services"
+            parent="service_master_main_menu" action="service_master_action" sequence="1" groups="base.group_user"/>
+    </data>
+</odoo>
